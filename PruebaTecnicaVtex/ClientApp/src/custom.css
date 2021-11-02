@@ -226,6 +226,12 @@ p {
   font-size: 35px;
 }
 
+.title_item {
+  font-family: "Neucha", cursive;
+  font-size: 140px;
+  margin-top: 60px;
+}
+
 .heading {
   text-transform: uppercase;
   font-size: 40px;
