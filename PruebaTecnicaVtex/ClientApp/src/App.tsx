@@ -1,6 +1,5 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import Layout from "./components/Layout";
 
 import "./custom.css";
 import LoginProvider from "./modules/login/LoginProvider";

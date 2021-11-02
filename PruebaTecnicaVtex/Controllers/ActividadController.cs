@@ -38,7 +38,7 @@ namespace PruebaTecnicaVtex.Controllers
             return StatusCode((int)respuesta.Codigo, respuesta);
         }
 
-        [HttpPatch("{id}")]
+        [HttpPatch("{id}/{estadoActividad}")]
         public async Task<ActionResult<dynamic>> UpdateState(string estadoActividad, Guid id)
         {
             var respuesta = await _servicioActividad.ActualizarEstado(estadoActividad, id);
@@ -46,9 +46,16 @@ namespace PruebaTecnicaVtex.Controllers
         }
 
         [HttpGet("{idUsuario}")]
-        public async Task<ActionResult<dynamic>> getActivities(int idUsuario)
+        public async Task<ActionResult<dynamic>> GetActivities(int idUsuario)
         {
             var respuesta = await _servicioActividad.ConsultarActividades(idUsuario);
+            return StatusCode((int)respuesta.Codigo, respuesta);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<dynamic>> DeleteActivity(Guid id)
+        {
+            var respuesta = await _servicioActividad.EliminarActividad(id);
             return StatusCode((int)respuesta.Codigo, respuesta);
         }
 

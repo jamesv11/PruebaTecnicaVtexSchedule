@@ -71,6 +71,7 @@ const RegisterForm = () => {
         alignItems: "center",
         alignContent: "center",
       }}
+      className="App"
     >
       <div>
         <h1 style={{ fontSize: "4rem", color: "#23A4CA" }}>

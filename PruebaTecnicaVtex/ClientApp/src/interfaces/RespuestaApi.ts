@@ -1,6 +1,13 @@
 export interface RespuestaApi {
-  data?: any[];
-  success?: boolean;
-  status?: number;
+  datos?: any[];
+  error?: boolean;
+  codigo?: number;
+  mensaje?: string;
+}
+
+export interface RespuestaApiObject {
+  datos?: any;
+  error?: boolean;
+  codigo?: number;
   mensaje?: string;
 }

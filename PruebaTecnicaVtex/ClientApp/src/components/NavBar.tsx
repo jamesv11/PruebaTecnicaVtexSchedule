@@ -6,9 +6,14 @@ import ButtonLoginNavBar from "./ButtonLoginNavBar";
 const NavBar = () => {
   const login = useLogin();
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-2 bg-body rounded">
       <div className="container-fluid">
-        <NavLink exact to="/" activeClassName="active" className="navbar-brand">
+        <NavLink
+          exact
+          to="/"
+          activeClassName="active "
+          className="navbar-brand nav_item_app"
+        >
           Tu <span style={{ color: "#30C1EC" }}>agenda </span>
         </NavLink>
         <div className="collapse navbar-collapse">
@@ -22,7 +27,7 @@ const NavBar = () => {
                     to="/login"
                     activeClassName="active"
                   >
-                    Login
+                    Iniciar sesión
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -32,7 +37,7 @@ const NavBar = () => {
                     to="/registrar"
                     activeClassName="active"
                   >
-                    Register
+                    Registrarse
                   </NavLink>
                 </li>
               </>

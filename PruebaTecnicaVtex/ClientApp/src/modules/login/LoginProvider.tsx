@@ -24,12 +24,7 @@ const LoginProvider: FC = ({ children }) => {
         '{"id":"","usuarioIdentificacion":"","nombre":"","token":""}'
     )
   );
-  const [loggedIn, setLoggedIn] = useState<boolean>(
-    JSON.parse(
-      localStorage.getItem("user") ||
-        '{"id":"","usuarioIdentificacion":"","nombre":"","token":""}'
-    ) !== '{"id":"","usuarioIdentificacion":"","nombre":"","token":""}'
-  );
+  const [loggedIn, setLoggedIn] = useState<boolean>(user.token !== "");
   const Login = () => setLoggedIn(true);
   const Logout = () => {
     localStorage.removeItem("user");

@@ -98,6 +98,40 @@ namespace Aplicacion.Servicios.ServicioActividad
             return Respuesta<ActividadOutput>.CrearRespuestaExitosa(actividadOutput, HttpStatusCode.OK,
                 "Estado actividad actualizado con exito");
         }
+        public async Task<Respuesta<ActividadOutput>> EliminarActividad(Guid id)
+        {
+            try
+            {
+                return await RealizarEliminacionActividad(id);
+            }
+            catch (Exception e)
+            {
+                UnidadDeTrabajo.RollBack();
+                return Respuesta<ActividadOutput>.CrearRespuestaFallida(e, HttpStatusCode.BadRequest,
+                   "Ha sucedido un error al crear la actividad");
+            }
+        }
+
+        private async Task<Respuesta<ActividadOutput>> RealizarEliminacionActividad(Guid id)
+        {
+
+            var existeActividad = (await _repositorioActividad.ExisteRegistro(u =>
+                u.Id.Equals(id)));
+
+
+            if (!existeActividad)
+                return Respuesta<ActividadOutput>.CrearRespuesta(true);
+
+            var actividadEncontrada = (await _repositorioActividad.ObtenerPor(u =>
+                 u.Id.Equals(id))).First();
+
+
+
+            await _repositorioActividad.Remover(actividadEncontrada);
+            var actividadOutput = Mapper.Map<ActividadOutput>(actividadEncontrada);
+            return Respuesta<ActividadOutput>.CrearRespuestaExitosa(actividadOutput, HttpStatusCode.OK,
+                "Activiad eliminada con exito");
+        }
 
         public async Task<Respuesta<List<ActividadOutput>>> ConsultarActividades(int idUsuario)
         {
